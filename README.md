@@ -60,14 +60,14 @@ It allows users to browse products, filter and sort them, view product details, 
 ## 📦 Installation & Setup
 
 ```bash
-git clone <your-repo-link>
-cd ecommerce-app
+git clone https://github.com/Abubakar3007/ecommerce-assignment.git
+cd ecommerce-test
 npm install
 npm start
 ```
 
 App will run on:
-👉 http://localhost:3000
+👉 http://localhost:5173
 
 ---
 
