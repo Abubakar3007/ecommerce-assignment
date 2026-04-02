@@ -21,6 +21,7 @@ const HomePage = () => {
         // check if select category is 0 or All
         if (selectedCategories.length === 0) {
           data = await fetchAllProducts();
+          console.log(data);
         }
         else if (selectedCategories.length === 1) {
           data = await fetchProductsByFilterCategory(selectedCategories[0]); // if user select single category like - electronics
@@ -103,10 +104,11 @@ const HomePage = () => {
           <FilterProduct
             categories={[
               "All",
-              "Men's clothing",
-              "Jewelery",
+              "Clothes",
               "Electronics",
-              "Women's clothing",
+              "Furniture",
+              "Shoes",
+              "Miscellaneous",
             ]}
             selectedCategories={selectedCategories}
             sortBy={sortBy}

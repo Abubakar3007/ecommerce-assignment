@@ -7,9 +7,9 @@ import { useCart } from "../context/AppContext";
 const ProductCard = ({ product }: { product: Product }) => {
   const { cart, addToCart, removeFromCart } = useCart();
   // add and remove from cart logic
-  
+
   const handleAddToCart = (id: number) => {
-    const productInCart = cart.find((item:Product) => item.id === id);
+    const productInCart = cart.find((item: Product) => item.id === id);
     if (productInCart) {
       removeFromCart(id);
     } else {
@@ -35,17 +35,14 @@ const ProductCard = ({ product }: { product: Product }) => {
 
   const imageContainerStyle: React.CSSProperties = {
     height: "220px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: "20px",
+    display: "block",
     background: "#f8f9fa",
   };
 
   const imageStyle: React.CSSProperties = {
-    maxHeight: "180px",
-    maxWidth: "100%",
-    objectFit: "contain",
+    objectFit: "cover",
+    width: "100%",
+    height: "100%",
     cursor: "pointer",
     textDecoration: "none",
   };
@@ -99,7 +96,7 @@ const ProductCard = ({ product }: { product: Product }) => {
     background: "#f7f7f7ff",
     boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
     filter: "blur(0.2px)",
-    borderRadius: "50%", 
+    borderRadius: "50%",
   });
 
   const priceStyle: React.CSSProperties = {
@@ -121,7 +118,8 @@ const ProductCard = ({ product }: { product: Product }) => {
           style={imageContainerStyle}
         >
           <img
-            src={product.image}
+            rel="preload"
+            src={product?.images[0] || "https://via.placeholder.com/300"}
             alt={product.title}
             style={imageStyle}
             loading="lazy"
@@ -133,13 +131,13 @@ const ProductCard = ({ product }: { product: Product }) => {
         <button
           type="button"
           title="Add item cart"
-          style={cartButtonStyle(cart.some((item:Product) => item.id === product.id))}
+          style={cartButtonStyle(cart.some((item: Product) => item.id === product.id))}
           onClick={() => handleAddToCart(product.id)}
         >
           <Heart
             size={20}
             stroke="#982b3dff"
-            fill={cart.some((item:Product) => item.id === product.id) ? "#982b3dff" : "none"}
+            fill={cart.some((item: Product) => item.id === product.id) ? "#982b3dff" : "none"}
           />
         </button>
       </div>

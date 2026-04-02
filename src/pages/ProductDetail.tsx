@@ -86,19 +86,18 @@ const ProductDetail = () => {
 
   const imageContainerStyle: React.CSSProperties = {
     flex: "1 1 300px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    background: "#f8f9fa",
-    borderRadius: "12px",
-    padding: "30px",
-    minHeight: "300px",
   };
 
   const imageStyle: React.CSSProperties = {
-    maxHeight: "350px",
-    maxWidth: "100%",
-    objectFit: "contain",
+    objectFit: "cover",
+    width: "100%",
+    maxHeight: "300px",
+  };
+
+  const smallImagesStyle: React.CSSProperties = {
+    display: "flex",
+    gap: "10px",
+    marginTop: "10px",
   };
 
   const infoStyle: React.CSSProperties = {
@@ -180,11 +179,18 @@ const ProductDetail = () => {
           <div style={detailCardStyle}>
             {/* product image */}
             <div style={imageContainerStyle}>
-              <img src={product.image} alt={product.title} style={imageStyle} />
+              <img rel="preload" src={product.images[0]} alt={product.title} style={imageStyle} loading="lazy"/>
+              {/* all small images */}
+              <div style={smallImagesStyle}>
+                {product.images.slice(1).map((image, index) => (
+                  <img rel="preload" key={index} src={image} alt={product.title} style={{width: "100%", height: "120px", objectFit: "cover"}} loading="lazy"/>
+                ))}
+              </div>
             </div>
 
             {/* product info */}
             <div style={infoStyle}>
+              <div style={{ fontSize: "0.9rem", color: "#666" }}>{product.category?.name}</div>
               <h1 style={titleStyle}>{product.title}</h1>
               <p style={descriptionStyle}>{product.description}</p>
               <div style={priceStyle}>${product.price.toFixed(2)}</div>

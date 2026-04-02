@@ -81,9 +81,9 @@ npx cypress open
 
 ## 🔗 API Used
 
-* https://fakestoreapi.com/products
-* https://fakestoreapi.com/products/:id
-* https://fakestoreapi.com/products/category/:category
+* https://api.escuelajs.co/api/v1/products
+* https://api.escuelajs.co/api/v1/products/:id
+* https://api.escuelajs.co/api/v1/products/category/:category
 
 ---
 

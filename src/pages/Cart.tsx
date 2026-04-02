@@ -444,7 +444,7 @@ const Cart = () => {
                                         </Link>
 
                                         {/* category */}
-                                        <div style={categoryTagStyle}>{product.category}</div>
+                                        <div style={categoryTagStyle}>{product.category?.name}</div>
 
                                         {/* price */}
                                         <div style={priceRowStyle}>
